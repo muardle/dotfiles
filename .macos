@@ -1,0 +1,95 @@
+#!/bin/sh
+
+##############################
+# Finder
+##############################
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: icnv, clmv, Flwv
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Set Downloads as the default location for new Finder windows
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads/"
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+##############################
+# Menu bar
+##############################
+
+# Show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+# Show 24 hour digital clock preceeded by day and date
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+
+##############################
+# Dock
+##############################
+
+# Automatically hide and show the dock
+defaults write com.apple.dock autohide -bool true
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Wipe all (default) application icons from the dock
+defaults write com.apple.dock persistent-apps -array
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Set the icon size of Dock items to 54 pixels
+defaults write com.apple.dock tilesize -int 54
+
+##############################
+# Hot corners
+##############################
+
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+
+# Top right screen corner > Put display to sleep
+defaults write com.apple.dock wvous-tr-corner -int 10
+defaults write com.apple.dock wvous-tr-modifier -int 0
+
+##############################
+# Screen capture
+##############################
+
+# Save screenshots to the Downloads directory
+defaults write com.apple.screencapture location -string "${HOME}/Downloads"
+
+##############################
+# Printer
+##############################
+
+# Automatically quit printer app once the print job is complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+##############################
+# Terminal and iTerm2
+##############################
+
+# Don’t display prompt when quitting iTerm2
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
