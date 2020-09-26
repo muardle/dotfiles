@@ -1,0 +1,5 @@
+[core]
+  excludesfile = ~/.gitignore
+[user]
+  name = Tom McArdle
+  email = 71933231+muardle@users.noreply.github.com
