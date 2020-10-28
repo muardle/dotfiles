@@ -1,19 +1,21 @@
 #!/bin/sh
 
-# Install Homebrew
+echo "🚀 Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-# Install applications with Homebrew
+echo "🚀 Installing packages with Homebrew..."
 brew bundle
 
-# Copy dotfiles to home directory
+echo "🔧 Copying dotfiles to home directory..."
 cp {.gitconfig,.gitignore} ~/
 
-# Install App Store applications and updates
+echo "🚀 Installing App Store applications and updates..."
 sudo softwareupdate -i -a
 
-# Configure system preferences
+echo "🔧 Configuring system preferences..."
 source .macos
 
-# Install Oh My Zsh
+echo "🚀 Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "🎉 Finished! Please restart your system..."
